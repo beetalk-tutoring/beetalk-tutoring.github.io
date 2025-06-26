@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeTalk Tutoring | Stop the Stress. Start the Success.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Buzz & Trust (Primary: #facc15 - Yellow, Secondary: #334155 - Slate, Accent: #4f46e5 - Indigo, Background: #f8fafc - Slate) -->
+    <!-- Application Structure Plan: The application is structured as a narrative landing page to guide prospective students and parents logically from the problem to the solution. The flow is: 1) Hero Section to grab attention and state the value proposition. 2) Benefits Section to build trust by detailing 'what's in it for me'. 3) Interactive Subjects Section to present offerings without overwhelming the user. 4) A "How It Works" process diagram to clarify the student journey and build confidence. 5) A testimonial slider for social proof, which is critical for this audience. 6) A final, clear Call-to-Action section to drive conversion. This structure is more persuasive and user-friendly than the original flyer's simple list format. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Core benefits -> Goal: Persuade -> Viz/Method: Interactive Cards (HTML/Tailwind with JS hover effects) -> Justification: More engaging and visually separates key value points.
+        - Report Info: List of subjects -> Goal: Organize & Inform -> Viz/Method: Interactive Tabs (JS) -> Justification: Reduces cognitive load by grouping subjects. Users can explore what's relevant to them, making the information feel more personalized.
+        - Report Info (Implied Need): User Journey -> Goal: Build Trust & Clarity -> Viz/Method: Numbered Step Diagram (HTML/Tailwind) -> Justification: A visual process map demystifies the service and sets clear expectations.
+        - Report Info (Implied Need): Social Proof -> Goal: Persuade & Build Credibility -> Viz/Method: Testimonial Carousel (JS) -> Justification: Authentic stories resonate strongly and are more convincing than self-promotion.
+        - All other content is presented in clean, well-structured text blocks to maintain readability.
+     -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .tab-button.active { background-color: #facc15; color: #1e293b; }
+        .testimonial-slide { display: none; }
+        .testimonial-slide.active { display: block; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-700">
+
+    <!-- Header & Hero Section -->
+    <header class="bg-slate-100">
+        <div class="container mx-auto px-6 py-16 text-center">
+            <h1 class="text-5xl md:text-6xl font-extrabold text-slate-800">
+                <span class="text-yellow-500 text-6xl md:text-7xl">🐝</span> BeeTalk
+            </h1>
+            <p class="mt-4 text-xl md:text-2xl font-semibold text-slate-600">Stop the Stress. Start the Success.</p>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-500">Feeling overwhelmed by homework and exams? Get the friendly, one-on-one help you need to understand tough subjects, boost your grades, and build real confidence.</p>
+            <a href="#contact" class="mt-8 inline-block bg-yellow-400 text-slate-900 font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:bg-yellow-500 transition-transform transform hover:scale-105">
+                Book Your Free Consultation
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Benefits Section -->
+        <section id="benefits" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-800">Your Path to Better Grades</h2>
+                <p class="mt-2 text-lg text-slate-500">We focus on a learning strategy that works for you.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Personalized Sessions</h3>
+                    <p>Forget one-size-fits-all. We focus on what YOU need help with, at your pace. Your goals drive our sessions.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-4xl mb-4">💡</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Understand, Don't Just Memorize</h3>
+                    <p>We uncover the 'why' behind the answers, so you gain lasting knowledge and can solve problems on your own.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <div class="text-4xl mb-4">🚀</div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2">Boost Your Grades & Confidence</h3>
+                    <p>Get the dedicated support you need to ace your exams, nail your essays, and feel great about your hard work.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Subjects Section -->
+        <section id="subjects" class="py-12 bg-slate-100 rounded-2xl">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-800">What We Cover</h2>
+                <p class="mt-2 text-lg text-slate-500">Expert help is available across all core subjects.</p>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-8" id="tab-buttons">
+                    <button data-tab="math" class="tab-button active text-lg font-semibold px-6 py-3 rounded-full bg-white text-slate-700 transition">Math</button>
+                    <button data-tab="science" class="tab-button text-lg font-semibold px-6 py-3 rounded-full bg-white text-slate-700 transition">Science</button>
+                    <button data-tab="humanities" class="tab-button text-lg font-semibold px-6 py-3 rounded-full bg-white text-slate-700 transition">Humanities</button>
+                    <button data-tab="skills" class="tab-button text-lg font-semibold px-6 py-3 rounded-full bg-white text-slate-700 transition">Skills</button>
+                </div>
+                <div id="tab-content" class="bg-white p-8 rounded-xl min-h-[150px]">
+                    <div data-content="math" class="tab-pane active">
+                        <ul class="flex flex-wrap justify-center gap-4 text-center">
+                            <li class="bg-yellow-100 text-yellow-800 font-medium px-4 py-2 rounded-md">Algebra I & II</li>
+                            <li class="bg-yellow-100 text-yellow-800 font-medium px-4 py-2 rounded-md">Geometry</li>
+                            <li class="bg-yellow-100 text-yellow-800 font-medium px-4 py-2 rounded-md">Pre-Calculus</li>
+                            <li class="bg-yellow-100 text-yellow-800 font-medium px-4 py-2 rounded-md">Trigonometry</li>
+                        </ul>
+                    </div>
+                    <div data-content="science" class="tab-pane hidden">
+                        <ul class="flex flex-wrap justify-center gap-4 text-center">
+                            <li class="bg-green-100 text-green-800 font-medium px-4 py-2 rounded-md">Biology</li>
+                            <li class="bg-green-100 text-green-800 font-medium px-4 py-2 rounded-md">Chemistry</li>
+                            <li class="bg-green-100 text-green-800 font-medium px-4 py-2 rounded-md">Physics</li>
+                        </ul>
+                    </div>
+                    <div data-content="humanities" class="tab-pane hidden">
+                        <ul class="flex flex-wrap justify-center gap-4 text-center">
+                            <li class="bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-md">English & Literature</li>
+                            <li class="bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-md">History & Government</li>
+                            <li class="bg-blue-100 text-blue-800 font-medium px-4 py-2 rounded-md">Essay Writing</li>
+                        </ul>
+                    </div>
+                     <div data-content="skills" class="tab-pane hidden">
+                        <ul class="flex flex-wrap justify-center gap-4 text-center">
+                            <li class="bg-indigo-100 text-indigo-800 font-medium px-4 py-2 rounded-md">Study Skills & Organization</li>
+                            <li class="bg-indigo-100 text-indigo-800 font-medium px-4 py-2 rounded-md">Time Management</li>
+                            <li class="bg-indigo-100 text-indigo-800 font-medium px-4 py-2 rounded-md">Test Preparation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section id="process" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-800">Your Simple Path to Success</h2>
+                <p class="mt-2 text-lg text-slate-500">Getting started is easy. Here's the plan.</p>
+            </div>
+            <div class="relative grid md:grid-cols-3 gap-8 text-center">
+                 <div class="absolute top-8 left-0 w-full h-1 bg-slate-200 hidden md:block"></div>
+                 <div class="relative flex flex-col items-center">
+                    <div class="z-10 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center text-2xl font-bold text-slate-900 mb-4 border-4 border-slate-50">1</div>
+                    <h3 class="text-xl font-bold text-slate-800">Free Consultation</h3>
+                    <p class="text-slate-500 mt-2">We'll chat for 30 minutes about your goals and challenges. No pressure, just a friendly conversation.</p>
+                </div>
+                <div class="relative flex flex-col items-center">
+                    <div class="z-10 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center text-2xl font-bold text-slate-900 mb-4 border-4 border-slate-50">2</div>
+                    <h3 class="text-xl font-bold text-slate-800">Create a Plan</h3>
+                    <p class="text-slate-500 mt-2">Together, we'll create a personalized tutoring plan that targets exactly what you need to work on.</p>
+                </div>
+                <div class="relative flex flex-col items-center">
+                    <div class="z-10 w-16 h-16 bg-yellow-400 rounded-full flex items-center justify-center text-2xl font-bold text-slate-900 mb-4 border-4 border-slate-50">3</div>
+                    <h3 class="text-xl font-bold text-slate-800">Start Learning</h3>
+                    <p class="text-slate-500 mt-2">Jump into your tailored sessions and start seeing real progress from day one.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-12">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-800">Success Stories</h2>
+                <p class="mt-2 text-lg text-slate-500">Hear from students who turned things around.</p>
+            </div>
+            <div id="testimonial-container" class="relative max-w-3xl mx-auto bg-white p-8 sm:p-12 rounded-xl shadow-lg min-h-[250px] flex items-center justify-center">
+                <div class="testimonial-slide active">
+                    <p class="text-xl sm:text-2xl text-slate-600 italic">"I was completely lost in Chemistry, but after a few weeks with BeeTalk, it finally clicked. I actually understood the final exam and got a B!"</p>
+                    <p class="text-right mt-4 font-bold text-slate-800">- Sarah J., 11th Grade</p>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="text-xl sm:text-2xl text-slate-600 italic">"Writing essays used to be my worst nightmare. My tutor helped me organize my thoughts and write way more clearly. My English grade went up an entire letter."</p>
+                    <p class="text-right mt-4 font-bold text-slate-800">- Mike R., 10th Grade</p>
+                </div>
+                <div class="testimonial-slide">
+                    <p class="text-xl sm:text-2xl text-slate-600 italic">"The study skills I learned were a game-changer. I'm spending less time studying now but getting better grades in all my classes."</p>
+                    <p class="text-right mt-4 font-bold text-slate-800">- Chloe T., 12th Grade</p>
+                </div>
+                <button id="prev-testimonial" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-md -ml-4 hover:bg-slate-100">
+                    <span class="text-2xl">‹</span>
+                </button>
+                <button id="next-testimonial" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full p-2 shadow-md -mr-4 hover:bg-slate-100">
+                    <span class="text-2xl">›</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact" class="py-16 bg-slate-800 text-white rounded-2xl">
+            <div class="text-center">
+                <h2 class="text-4xl font-bold">Ready to Make a Change?</h2>
+                <p class="mt-4 text-lg text-slate-300 max-w-2xl mx-auto">Take the first step towards less stress and more success. Your first 30-minute consultation is completely free.</p>
+                <div class="mt-8">
+                    <p class="text-slate-300 text-xl">Text or Call to Schedule:</p>
+                    <a href="tel:555-233-8255" class="text-yellow-400 text-4xl font-bold tracking-wider hover:text-yellow-300 transition">(555) 233-8255</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center py-8">
+        <p class="text-slate-500"><strong>[Your Name]</strong> | Your Friendly Neighborhood Tutor</p>
+        <p class="text-sm text-slate-400 mt-1">© 2025 BeeTalk Tutoring. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tabs for Subjects Section
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tab = button.dataset.tab;
+
+                    tabButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+
+                    tabPanes.forEach(pane => {
+                        if (pane.dataset.content === tab) {
+                            pane.classList.remove('hidden');
+                             pane.classList.add('active');
+                        } else {
+                            pane.classList.add('hidden');
+                            pane.classList.remove('active');
+                        }
+                    });
+                });
+            });
+
+            // Testimonials Carousel
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const prevButton = document.getElementById('prev-testimonial');
+            const nextButton = document.getElementById('next-testimonial');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
+
+            nextButton.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            });
+
+            prevButton.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            });
+            
+            setInterval(() => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }, 5000); 
+        });
+    </script>
+</body>
+</html>
