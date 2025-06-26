@@ -1,2 +1,2 @@
-# beetalk.github.io
+# beetalk-tutoring.github.io
 BeeTalk Tutoring
